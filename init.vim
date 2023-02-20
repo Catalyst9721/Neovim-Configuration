@@ -22,6 +22,8 @@
 
 :set colorcolumn = "80"
 
+:set splitright
+
 
 inoremap " ""<left>
 inoremap ' ''<left>
