@@ -13,9 +13,19 @@ return require('packer').startup(function(use)
     --####################################################
 
     use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
-    use('theprimeagen/harpoon')
+    --use('theprimeagen/harpoon')
     use('tpope/vim-fugitive')
-    use('lukas-reineke/indent-blankline.nvim')
+    use ('lukas-reineke/indent-blankline.nvim')
+
+
+    --####################################################
+    -- Nvim Autopairs
+    --####################################################
+
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
+    }
 
 
     --####################################################
@@ -29,18 +39,21 @@ return require('packer').startup(function(use)
     }
 
 
+
     --####################################################
-    -- Tokyo Night Theme
+    -- Rose Pine
     --####################################################
 
     use({
-        'folke/tokyonight.nvim',
-        as = 'tokyonight',
+        'rose-pine/neovim',
+        as = 'rose-pine',
         config = function()
-            require("tokyonight").setup()
-            vim.cmd('colorscheme tokyonight-moon')
+            require("rose-pine").setup({
+                dark_variant = 'moon'
+            })
+            vim.cmd('colorscheme rose-pine')
         end
-    })
+    }) 
 
 
     --####################################################
