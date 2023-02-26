@@ -16,6 +16,19 @@ return require('packer').startup(function(use)
     --use('theprimeagen/harpoon')
     use('tpope/vim-fugitive')
     use ('lukas-reineke/indent-blankline.nvim')
+    use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
+
+
+    --####################################################
+    -- Gitsigns
+    --####################################################
+    --
+    use {
+        'lewis6991/gitsigns.nvim',
+        config = function()
+            require('gitsigns').setup()
+        end
+    }
 
 
     --####################################################
@@ -37,7 +50,6 @@ return require('packer').startup(function(use)
         -- or                            , branch = '0.1.x',
         requires = { {'nvim-lua/plenary.nvim'} }
     }
-
 
 
     --####################################################
