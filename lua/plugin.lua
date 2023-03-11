@@ -12,31 +12,90 @@ return require('packer').startup(function(use)
     -- Other
     --####################################################
 
-    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
     --use('theprimeagen/harpoon')
-    use('tpope/vim-fugitive')
-    use ('lukas-reineke/indent-blankline.nvim')
+    use { 'tpope/vim-fugitive' }
+    use { 'lukas-reineke/indent-blankline.nvim' }
     use { 'sindrets/diffview.nvim', requires = 'nvim-lua/plenary.nvim' }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+    use { 'glepnir/dashboard-nvim', event = 'VimEnter', requires = {'nvim-tree/nvim-web-devicons'} }
+    use {'nyoom-engineering/oxocarbon.nvim'}
+>>>>>>> e83f562 (Re-orginised the file structure a bit, changed the theme, and added the 'Neorg' plugin, and maybe another one that I'm forgetting)
 
 
     --####################################################
     -- Gitsigns
     --####################################################
+<<<<<<< HEAD
     --
     use {
         'lewis6991/gitsigns.nvim',
+=======
+
+    use {
+        'lewis6991/gitsigns.nvim',
+
+>>>>>>> e83f562 (Re-orginised the file structure a bit, changed the theme, and added the 'Neorg' plugin, and maybe another one that I'm forgetting)
         config = function()
             require('gitsigns').setup()
         end
     }
+<<<<<<< HEAD
 =======
 >>>>>>> e667492af0355db24605a343634fc98cff8233f7
+=======
+
+
+    --####################################################
+    -- Treesitter
+    --####################################################
+
+    use {
+        'nvim-treesitter/nvim-treesitter',
+
+        config = function()
+            require 'nvim-treesitter.configs'.setup {
+                ensure_installed = { 'norg' },
+
+                highlight = {
+                    enable = true,
+                }
+            }
+        end
+    }
+
+
+    --####################################################
+    -- Neorg
+    --####################################################
+
+    use {
+        "nvim-neorg/neorg",
+        run = ":Neorg sync-parsers",
+        config = function()
+            require('neorg').setup {
+                load = {
+                    ["core.defaults"] = {}, -- Loads default behaviour
+                    ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
+                    ["core.norg.dirman"] = { -- Manages Neorg workspaces
+                        config = {
+                            workspaces = {
+                                notes = "~/notes",
+                            },
+                        },
+                    },
+                },
+            }
+        end,
+        requires = "nvim-lua/plenary.nvim",
+    }
+>>>>>>> e83f562 (Re-orginised the file structure a bit, changed the theme, and added the 'Neorg' plugin, and maybe another one that I'm forgetting)
 
     --####################################################
     -- Trouble.nvim
     --####################################################
-    --
+
     use {
         "folke/trouble.nvim",
         requires = "nvim-tree/nvim-web-devicons",
@@ -48,6 +107,7 @@ return require('packer').startup(function(use)
             }
         end
     }
+
 
     --####################################################
     -- Nvim Autopairs
@@ -70,6 +130,7 @@ return require('packer').startup(function(use)
     }
 
 
+<<<<<<< HEAD
     --####################################################
     -- Rose Pine
     --####################################################
@@ -86,6 +147,8 @@ return require('packer').startup(function(use)
     })
 
 
+=======
+>>>>>>> e83f562 (Re-orginised the file structure a bit, changed the theme, and added the 'Neorg' plugin, and maybe another one that I'm forgetting)
     --####################################################
     -- LuaLine
     --####################################################
@@ -96,7 +159,7 @@ return require('packer').startup(function(use)
         config = function()
             require('lualine').setup()
         end
-        }
+    }
 
 
     --####################################################
@@ -108,7 +171,11 @@ return require('packer').startup(function(use)
         requires = {
             'nvim-tree/nvim-web-devicons', -- optional, for file icons
         },
-        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+        tag = 'nightly', -- optional, updated every week. (see issue #1193)
+
+        config = function()
+            require("nvim-tree").setup()
+        end
     }
 
 
